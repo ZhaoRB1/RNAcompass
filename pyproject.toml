@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rnacompass"
+version = "1.0.0"
+description = "Single-model RNA dependency-map inference with fixed structural filtering"
+readme = "README.md"
+requires-python = ">=3.9,<3.10"
+license = "MIT"
+license-files = ["LICENSE", "licenses/*.txt", "THIRD_PARTY_NOTICES.md"]
+authors = [
+  {name = "Ruobin Zhao"},
+  {name = "Xitong Liu"},
+]
+maintainers = [{name = "Lei Sun", email = "sunlei0227@sdu.edu.cn"}]
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.10.1",
+  "matplotlib==3.9.4",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Operating System :: POSIX :: Linux",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9", "build>=1,<2"]
+
+[project.scripts]
+rnacompass = "rnacompass.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rnacompass = ["data/*.json"]
+"rnacompass._vendor.ernie_project.src" = ["dict/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["gpu: requires the full checkpoints and an NVIDIA CUDA GPU"]

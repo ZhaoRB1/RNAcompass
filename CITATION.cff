@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use RNAcompass, please cite the software and associated paper."
+title: "RNAcompass"
+version: 1.0.0
+license: MIT
+authors:
+  - family-names: "Zhao"
+    given-names: "Ruobin"
+    affiliation: "School of Life Sciences, Shandong University"
+  - family-names: "Liu"
+    given-names: "Xitong"
+    affiliation: "School of Life Sciences, Shandong University"
+contact:
+  - family-names: "Sun"
+    given-names: "Lei"
+    email: "sunlei0227@sdu.edu.cn"
+    affiliation: "School of Life Sciences and State Key Laboratory of Microbial Technology, Shandong University"
+preferred-citation:
+  type: article
+  title: "Distilling complementary knowledge across RNA language models reveals conserved structures from single sequences"
+  status: in-preparation
+  authors:
+    - family-names: "Zhao"
+      given-names: "Ruobin"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Cao"
+      given-names: "Pingping"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Liu"
+      given-names: "Xitong"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Wang"
+      given-names: "Jingwen"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Liu"
+      given-names: "Yuning"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Wang"
+      given-names: "Chengqian"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "He"
+      given-names: "Jiale"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Chen"
+      given-names: "Qiuzhen"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Liu"
+      given-names: "Xiaona"
+      affiliation: "Shandong Provincial Key Laboratory of Animal Cell and Developmental Biology, School of Life Sciences, Shandong University"
+    - family-names: "Sun"
+      given-names: "Lei"
+      affiliation: "School of Life Sciences and State Key Laboratory of Microbial Technology, Shandong University"
+  notes: "Ruobin Zhao, Pingping Cao and Xitong Liu contributed equally. Correspondence: Lei Sun (sunlei0227@sdu.edu.cn)."

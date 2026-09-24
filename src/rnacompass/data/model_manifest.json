@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "software_version": "1.0.0",
+  "model_id": "paper_r2__ernie_rna_giga__epoch002",
+  "architecture": "ernie_rna_giga",
+  "distillation_round": "paper_r2",
+  "checkpoint_epoch": 2,
+  "threshold": 14.168192944655118,
+  "max_sequence_length": 1022,
+  "weights": [
+    {
+      "name": "RNAcompass-trained ERNIE-RNA-giga base checkpoint",
+      "path": "base/checkpoint_12_960000.pt",
+      "size": 3653738558,
+      "sha256": "e83ae351adf73ae2c619ff969d91b8545b1dc93745abaffd5eb2ce9cd380f61e"
+    },
+    {
+      "name": "RNAcompass Paper-R2 epoch-2 distilled checkpoint",
+      "path": "distilled/vernie_rna_giga_irf_epoch002.pth",
+      "size": 1218010975,
+      "sha256": "02ae70fe93f3fa3b9b1b1020757b4e032df22becd225a055144cae17b032f9cd"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "absolute_threshold": 14.168192944655118,
+  "after_base_pairing": 42,
+  "after_greedy": 38,
+  "after_initial_continuity": 41,
+  "algorithm": "fixed_zero_sum_5x5_absolute_threshold_structural_cleanup",
+  "built_in_threshold": 14.168192944655118,
+  "candidate_interpretation": "single-sequence model-predicted conserved-pair candidate",
+  "final_continuity_iterations": 1,
+  "final_isolated_removed": 0,
+  "final_pairs": 38,
+  "initial_continuity_iterations": 2,
+  "initial_isolated_removed": 1,
+  "kernel": [
+    [
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      1.600000023841858
+    ],
+    [
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      1.600000023841858,
+      -0.4000000059604645
+    ],
+    [
+      -0.4000000059604645,
+      -0.4000000059604645,
+      1.600000023841858,
+      -0.4000000059604645,
+      -0.4000000059604645
+    ],
+    [
+      -0.4000000059604645,
+      1.600000023841858,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645
+    ],
+    [
+      1.600000023841858,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645,
+      -0.4000000059604645
+    ]
+  ],
+  "model_id": "paper_r2__ernie_rna_giga__epoch002",
+  "sequence_id": "RF00001",
+  "sequence_length": 120,
+  "software": "RNAcompass",
+  "threshold_candidates": 63,
+  "threshold_source": "built_in_optimized"
+}
