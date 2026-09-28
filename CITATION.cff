@@ -3,6 +3,7 @@ message: "If you use RNAcompass, please cite the software and associated paper."
 title: "RNAcompass"
 version: 1.0.0
 license: MIT
+repository-code: "https://github.com/ZhaoRB1/RNAcompass"
 authors:
   - family-names: "Zhao"
     given-names: "Ruobin"

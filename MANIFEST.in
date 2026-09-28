@@ -3,7 +3,6 @@ include LICENSE
 include MODEL_LICENSE.md
 include THIRD_PARTY_NOTICES.md
 include CITATION.cff
-include CHANGELOG.md
 include environment.yml
 include .gitattributes
 include .gitignore

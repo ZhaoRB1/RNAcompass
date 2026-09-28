@@ -28,7 +28,7 @@ Acceptance criteria are:
 
 CPU-only development and continuous integration do not satisfy this GPU gate.
 
-## Private v1 validation record
+## Reference validation record
 
 The release gate passed on 2026-09-24 with Python 3.9.16, PyTorch 1.10.0,
 CUDA 11.3, Fairseq 0.12.2 and an NVIDIA A800 80 GB GPU. For the 120-nt
