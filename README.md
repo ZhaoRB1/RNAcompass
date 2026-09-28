@@ -4,13 +4,16 @@
 - [Quick start](#quick-start)
 - [Usage](#usage)
 - [Reproducibility](#reproducibility)
-- [Citation](#citation)
 - [License](#license)
 
 RNAcompass is a co-distilled RNA language model for identifying conserved RNA
 structural signals from a single sequence. This repository provides the public
 v1 inference pipeline, from dependency-map generation to candidate base pairs
 and helices.
+
+The associated manuscript, *Distilling complementary knowledge across RNA
+language models reveals conserved structures from single sequences*, is in
+preparation.
 
 <p align="center">
   <img src="docs/assets/rnacompass.png" alt="RNAcompass co-distillation framework" width="800">
@@ -83,19 +86,8 @@ pytest -m "not gpu"
 GPU reference validation and acceptance criteria are documented in
 [docs/reproducibility.md](docs/reproducibility.md).
 
-## Citation
-
-The associated manuscript, *Distilling complementary knowledge across RNA
-language models reveals conserved structures from single sequences*, is in
-preparation. Citation metadata and the complete author list are available in
-[CITATION.cff](CITATION.cff).
-
-Please also cite the upstream ERNIE-RNA work listed in
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
 ## License
 
-RNAcompass source code is released under the [MIT License](LICENSE). The model
-weights are covered by [MODEL_LICENSE.md](MODEL_LICENSE.md); third-party code
-retains its original license as described in
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+RNAcompass source code and trained model parameters are released under the
+[MIT License](LICENSE), which also preserves the notice for the bundled
+ERNIE-RNA-derived source code.

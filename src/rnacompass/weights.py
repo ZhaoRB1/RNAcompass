@@ -44,8 +44,7 @@ WEIGHT_SPECS = (
 )
 
 LICENSE_FILES = (
-    "licenses/ERNIE-RNA-LICENSE.txt",
-    "licenses/RNACOMPASS-MODEL-LICENSE.txt",
+    "LICENSE",
 )
 
 

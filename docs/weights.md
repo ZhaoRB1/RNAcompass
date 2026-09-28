@@ -5,11 +5,9 @@ RNAcompass v1 expects one gzip-compressed tar archive with this exact layout:
 ```text
 rnacompass-weights-v1/
 ├── manifest.json
+├── LICENSE
 ├── base/checkpoint_12_960000.pt
-├── distilled/vernie_rna_giga_irf_epoch002.pth
-└── licenses/
-    ├── ERNIE-RNA-LICENSE.txt
-    └── RNACOMPASS-MODEL-LICENSE.txt
+└── distilled/vernie_rna_giga_irf_epoch002.pth
 ```
 
 `manifest.json` must contain `model_id`, plus the exact relative path, byte
@@ -22,11 +20,9 @@ unknown files, missing license files, size mismatches and digest mismatches.
 Installation uses a temporary sibling directory followed by an atomic rename.
 An existing invalid destination is never overwritten automatically.
 
-The two parameters files are RNAcompass project outputs and are licensed under
-the MIT terms bundled as `RNACOMPASS-MODEL-LICENSE.txt`. The ERNIE-RNA license
-is included because the runtime and model architecture derive from that
-project; it does not indicate that an upstream checkpoint is being
-redistributed.
+The archive's single `LICENSE` covers the RNAcompass-trained parameters and
+preserves the MIT notice for the ERNIE-RNA-derived implementation. Its presence
+does not indicate that an upstream checkpoint is being redistributed.
 
 The archive is larger than a single GitHub Release asset can be. Publish it in
 a durable external research-data repository or object store, then add the

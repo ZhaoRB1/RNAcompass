@@ -33,9 +33,9 @@ def _archive(path: Path, payload: bytes, spec: WeightSpec, extra_name: str | Non
     entries = {
         "manifest.json": manifest,
         spec.relative_path: payload,
-        LICENSE_FILES[0]: b"upstream license",
-        LICENSE_FILES[1]: b"model license",
     }
+    for license_file in LICENSE_FILES:
+        entries[license_file] = b"combined license"
     if extra_name:
         entries[extra_name] = b"unexpected"
     with tarfile.open(path, "w:gz") as archive:
