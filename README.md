@@ -19,10 +19,9 @@ preparation.
   <img src="docs/assets/rnacompass.png" alt="RNAcompass co-distillation framework" width="800">
 </p>
 
-- **Pretrained weights:** The verified v1 weight archive is available from the
-  corresponding author, Lei Sun ([sunlei0227@sdu.edu.cn](mailto:sunlei0227@sdu.edu.cn)),
-  while a permanent public archive is being prepared. See the
-  [weight specification](docs/weights.md).
+- **Pretrained weights:** Download the two public checkpoints from
+  [Google Drive](https://drive.google.com/drive/folders/1qIOZfk1cOgqKFd04wXXeLpuGF18qphBz?usp=sharing).
+  See the [weight specification](docs/weights.md).
 - **Reproducibility:** A reference input and expected outputs are included in
   the repository. See the [validation guide](docs/reproducibility.md).
 
@@ -32,6 +31,8 @@ RNAcompass requires Linux, Conda, and an NVIDIA GPU with a CUDA 11.3-compatible
 driver. The reference environment uses Python 3.9.16.
 
 ```bash
+git clone https://github.com/ZhaoRB1/RNAcompass.git
+cd RNAcompass
 conda env create -f environment.yml
 conda activate rnacompass
 python -m pip install -e .
@@ -41,13 +42,27 @@ CPU inference is not supported in v1.
 
 ## Quick start
 
-Install the downloaded weight archive, check the environment, and run the
-example sequence:
+Download the two checkpoints, verify the environment, and run the example
+sequence:
 
 ```bash
-rnacompass weights install --archive /path/to/rnacompass-weights-v1.tar.gz
+WEIGHTS_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/rnacompass/weights/v1"
+mkdir -p "$WEIGHTS_DIR/base" "$WEIGHTS_DIR/distilled"
+
+curl -L --fail --retry 5 --continue-at - \
+  -o "$WEIGHTS_DIR/base/checkpoint_12_960000.pt" \
+  "https://drive.usercontent.google.com/download?id=1bBG45EQi1TZKxYiZS3jpt8ePprHFlzGz&export=download&confirm=t"
+
+curl -L --fail --retry 5 --continue-at - \
+  -o "$WEIGHTS_DIR/distilled/vernie_rna_giga_irf_epoch002.pth" \
+  "https://drive.usercontent.google.com/download?id=1rz-QT529q64kymgW4E__i0vGEoP2VLMj&export=download&confirm=t"
+
+rnacompass weights status --check-hashes
 rnacompass preflight --device cuda:0
-rnacompass run --fasta examples/RF00001.fa --output-dir output --device cuda:0
+rnacompass run \
+  --fasta examples/RF00001.fa \
+  --output-dir output \
+  --device cuda:0
 ```
 
 ## Usage
