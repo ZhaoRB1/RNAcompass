@@ -16,7 +16,7 @@ language models reveals conserved structures from single sequences*, is in
 preparation.
 
 <p align="center">
-  <img src="docs/assets/rnacompass.png" alt="RNAcompass co-distillation framework" width="800">
+  <img src="docs/assets/rnacompass.png" alt="RNAcompass framework" width="800">
 </p>
 
 - **Pretrained weights:** Download the two public checkpoints from
