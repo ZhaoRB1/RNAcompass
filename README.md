@@ -12,9 +12,7 @@ v1 inference pipeline, from dependency-map generation to candidate base pairs
 and helices.
 
 The associated manuscript, *Distilling complementary knowledge across RNA
-language models reveals conserved structures from single sequences*, is in
-preparation.
-
+language models reveals conserved structures from single sequences*
 <p align="center">
   <img src="docs/assets/rnacompass.png" alt="RNAcompass framework" width="800">
 </p>
