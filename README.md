@@ -25,15 +25,24 @@ language models reveals conserved structures from single sequences*
 
 ## Installation
 
-RNAcompass requires Linux, Conda, and an NVIDIA GPU with a CUDA 11.3-compatible
-driver. The reference environment uses Python 3.9.16.
+Linux, Conda, one NVIDIA GPU with a CUDA 11.3-compatible driver, Python 3.9.16.
+Inference uses a single GPU; `--device` only selects which one.
 
 ```bash
-git clone https://github.com/ZhaoRB1/RNAcompass.git
-cd RNAcompass
+git clone https://github.com/ZhaoRB1/RNAcompass.git && cd RNAcompass
 conda env create -f environment.yml
 conda activate rnacompass
 python -m pip install -e .
+
+# fairseq must be installed separately: its default build compiles CUDA
+# extensions and pulls torchaudio, which conflicts with pytorch=1.10.0.
+python -m pip install cython bitarray regex sacrebleu packaging \
+  "tqdm==4.66.2" "hydra-core==1.0.7" "omegaconf==2.0.6"
+READTHEDOCS=1 python -m pip install --no-deps --no-build-isolation "fairseq==0.12.2"
+
+# Required on clusters that export a system CUDA path, otherwise the first
+# matrix multiply fails with CUBLAS_STATUS_NOT_SUPPORTED.
+unset LD_LIBRARY_PATH
 ```
 
 CPU inference is not supported in v1.
@@ -62,6 +71,10 @@ rnacompass run \
   --output-dir output \
   --device cuda:0
 ```
+
+Checkpoints you already have can be reused: keep the two filenames above, then
+point `RNACOMPASS_WEIGHTS_DIR` (or `--weights-dir`) at that directory instead of
+the default cache path.
 
 ## Usage
 

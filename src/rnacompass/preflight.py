@@ -41,6 +41,29 @@ def _version_matches(actual: str, expected: str) -> bool:
     return actual == expected or actual.startswith(expected + "+")
 
 
+SMOKE_SIZE = 64
+
+
+def cuda_smoke_row(torch_module, device: str) -> dict[str, object]:
+    """Run a real GEMM so an unusable cuBLAS fails here instead of mid-inference."""
+    dtypes = ["float32"] + (["float16"] if device.startswith("cuda:") else [])
+    detail: dict[str, str] = {}
+    ok = True
+    for name in dtypes:
+        try:
+            left = torch_module.randn(SMOKE_SIZE, SMOKE_SIZE, device=device, dtype=getattr(torch_module, name))
+            product = left.matmul(left)
+            detail[name] = f"ok {tuple(product.shape)}"
+        except Exception as exc:
+            ok = False
+            detail[name] = f"{type(exc).__name__}: {exc}"
+    return {
+        "check": "cuda_smoke_gemm",
+        "status": "OK" if ok else "FAILED",
+        "actual": detail,
+        "expected": "matrix multiply succeeds on the selected device",
+    }
+
 def run_preflight(weights_dir: str | Path | None = None, device: str = "cuda:0") -> dict[str, object]:
     rows: list[dict[str, object]] = []
     success = True
@@ -63,9 +86,12 @@ def run_preflight(weights_dir: str | Path | None = None, device: str = "cuda:0")
         rows.append({"check": f"package:{distribution}", "status": status, "actual": actual, "expected": expected})
         success = success and ok
 
+    device_ok = False
+    torch_module = None
     try:
         import torch
 
+        torch_module = torch
         cuda_ok = torch.cuda.is_available()
         index = int(device.split(":", 1)[1]) if device.startswith("cuda:") else -1
         device_ok = cuda_ok and 0 <= index < torch.cuda.device_count()
@@ -81,6 +107,11 @@ def run_preflight(weights_dir: str | Path | None = None, device: str = "cuda:0")
     except Exception as exc:
         rows.append({"check": "cuda", "status": "IMPORT_ERROR", "actual": str(exc), "expected": "CUDA 11.3-compatible NVIDIA GPU"})
         success = False
+
+    if torch_module is not None and device_ok:
+        smoke = cuda_smoke_row(torch_module, device)
+        rows.append(smoke)
+        success = success and smoke["status"] == "OK"
 
     dictionary = resources.files("rnacompass._vendor.ernie_project.src").joinpath("dict").joinpath("dict.txt")
     resource_ok = dictionary.is_file()
