@@ -25,8 +25,7 @@ language models reveals conserved structures from single sequences*
 
 ## Installation
 
-Linux, Conda, one NVIDIA GPU with a CUDA 11.3-compatible driver, Python 3.9.16.
-Inference uses a single GPU; `--device` only selects which one.
+Linux, Conda, an NVIDIA GPU with a CUDA 11.3-compatible driver, Python 3.9.16.
 
 ```bash
 git clone https://github.com/ZhaoRB1/RNAcompass.git && cd RNAcompass
@@ -98,6 +97,24 @@ rnacompass run --fasta examples/RF00001.fa --output-dir output --dry-run
 Each sample produces dependency maps, predicted base pairs and helices, a JSON
 summary, and PDF/SVG/PNG heatmaps under `output/results/<sample>/`. The model
 supports sequences up to 1,022 nt. Run `rnacompass run --help` for all options.
+
+### Using multiple GPUs
+
+Each process drives exactly one GPU, selected by `--device cuda:N`. To use
+several cards, run one process per card and split the input between them:
+
+```bash
+for i in 0 1 2 3; do
+  rnacompass run \
+    --fasta-dir "fastas/shard_$i" \
+    --output-dir "output/shard_$i" \
+    --device "cuda:$i" &
+done
+wait
+```
+
+The processes are independent: they share no state and do not need a launcher.
+Running the same input on one card or another gives identical output.
 
 ## Reproducibility
 
