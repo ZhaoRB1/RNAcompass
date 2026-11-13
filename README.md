@@ -5,7 +5,6 @@
 - [Quick start](#quick-start)
 - [Usage](#usage)
 - [Multi-GPU inference](#multi-gpu-inference)
-- [AUPRC evaluation](#auprc-evaluation)
 - [Reproducibility](#reproducibility)
 - [License](#license)
 
@@ -129,25 +128,6 @@ each GPU; a single sequence is processed on one GPU. Results and logs are
 kept in `output/shard_0/`, `output/shard_1/`, and so on. Inspect
 `output/multi_gpu_summary.json` for per-shard status; any failed shard makes
 the command exit nonzero. The selected devices must be visible to PyTorch.
-
-## AUPRC evaluation
-
-Evaluate the raw dependency maps against reciprocal base-pair labels after
-inference. For the multi-GPU output above:
-
-```bash
-python scripts/evaluate_auprc.py \
-  --matrices output \
-  --labels /path/to/labels \
-  --output-dir auprc_results
-```
-
-For a single-GPU run, use `--matrices output/results`. The evaluator writes
-per-family raw and fixed-5×5-convolution AUPRC to `per_family.csv` and their
-equal-weight means to `summary.json`. It expects 80 labeled families by
-default for a directory; use `--expected-families N` for a smaller set.
-See the [evaluation guide](docs/auprc_evaluation.md) for the label format,
-input layouts, and exact scoring procedure.
 
 ## Reproducibility
 
