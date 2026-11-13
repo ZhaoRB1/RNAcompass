@@ -20,9 +20,9 @@ rnacompass-weights-v1/
 ```
 
 `manifest.json` must contain `model_id`, plus the exact relative path, byte
-size and SHA256 digest of both checkpoints. The canonical machine-readable
-values are in `src/rnacompass/data/model_manifest.json` and are also printed by
-`rnacompass info --json`.
+size and SHA256 digest of both checkpoints. The checkpoint paths, sizes and
+digests are in `src/rnacompass/data/model_manifest.json`; the required
+`model_id` and archive specification are printed by `rnacompass info --json`.
 
 The installer rejects path traversal, absolute members, links, duplicates,
 unknown files, missing license files, size mismatches and digest mismatches.

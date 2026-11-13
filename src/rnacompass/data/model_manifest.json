@@ -1,10 +1,6 @@
 {
   "schema_version": 1,
   "software_version": "1.0.0",
-  "model_id": "paper_r2__ernie_rna_giga__epoch002",
-  "architecture": "ernie_rna_giga",
-  "distillation_round": "paper_r2",
-  "checkpoint_epoch": 2,
   "threshold": 14.168192944655118,
   "max_sequence_length": 1022,
   "weights": [
