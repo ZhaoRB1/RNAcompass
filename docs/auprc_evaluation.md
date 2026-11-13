@@ -12,8 +12,8 @@ columns: `rf_id`, `position_1based`, `base`, `paired_0_1`, and
 `partner_1based`. Positions and partners are 1-based; paired positions must
 point to each other. Each label file must match the sequence length of its
 matrix and contain at least one positive pair. The repository includes the
-[held-out 80-family labels](../data/test_80/labels/); select them with
-`--labels data/test_80/labels`.
+[held-out 80-family labels](../data/test/labels/); select them with
+`--labels data/test/labels`.
 
 The `--matrices` path may be:
 
@@ -28,7 +28,7 @@ Example for a multi-GPU run:
 ```bash
 python scripts/evaluate_auprc.py \
   --matrices output \
-  --labels data/test_80/labels \
+  --labels data/test/labels \
   --output-dir auprc_results
 ```
 
