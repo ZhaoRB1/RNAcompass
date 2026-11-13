@@ -11,8 +11,9 @@ Provide a directory of `RFxxxxx.tsv` label files using these five tab-separated
 columns: `rf_id`, `position_1based`, `base`, `paired_0_1`, and
 `partner_1based`. Positions and partners are 1-based; paired positions must
 point to each other. Each label file must match the sequence length of its
-matrix and contain at least one positive pair. Labels are supplied separately
-with `--labels`.
+matrix and contain at least one positive pair. The repository includes the
+[held-out 80-family labels](../data/test_80/README.md); select them with
+`--labels data/test_80/labels`.
 
 The `--matrices` path may be:
 
@@ -27,7 +28,7 @@ Example for a multi-GPU run:
 ```bash
 python scripts/evaluate_auprc.py \
   --matrices output \
-  --labels /path/to/labels \
+  --labels data/test_80/labels \
   --output-dir auprc_results
 ```
 
