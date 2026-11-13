@@ -5,7 +5,7 @@
 - [Quick start](#quick-start)
 - [Usage](#usage)
 - [Multi-GPU inference](#multi-gpu-inference)
-- [Reproducibility](#reproducibility)
+- [Checks and test data](#checks-and-test-data)
 - [License](#license)
 
 RNAcompass is a co-distilled RNA language model for detecting conserved
@@ -52,7 +52,7 @@ CPU inference is not supported in v1.
 Download the two checkpoints from [Google Drive](https://drive.google.com/drive/folders/1qIOZfk1cOgqKFd04wXXeLpuGF18qphBz?usp=sharing).
 The commands below place them in the default cache location. The files are
 checked against the published SHA-256 digests before inference; see the
-[weight specification](docs/weights.md) for their layout and archive format.
+[weight installation notes](docs/weights.md) for the expected paths.
 
 ```bash
 WEIGHTS_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/rnacompass/weights/v1"
@@ -98,7 +98,8 @@ rnacompass run \
   --batch-size 4
 ```
 
-Use `--dry-run` to validate inputs without loading PyTorch or the model weights:
+Use `--dry-run` to validate inputs without loading the model weights or running
+inference:
 
 ```bash
 rnacompass run --fasta examples/RF00001.fa --output-dir output --dry-run
@@ -112,7 +113,8 @@ Run `rnacompass run --help` for all options.
 ## Multi-GPU inference
 
 Use a single Python command to distribute FASTA records across the selected
-GPUs. The dispatcher starts one independent inference process per GPU:
+GPUs. The dispatcher starts one independent inference process for each device
+that receives records:
 
 ```bash
 python -m rnacompass.run_multi_gpu \
@@ -129,7 +131,7 @@ kept in `output/shard_0/`, `output/shard_1/`, and so on. Inspect
 `output/multi_gpu_summary.json` for per-shard status; any failed shard makes
 the command exit nonzero. The selected devices must be visible to PyTorch.
 
-## Reproducibility
+## Checks and test data
 
 Check input handling without loading weights, then validate the environment
 and checkpoints before GPU inference:
