@@ -131,16 +131,16 @@ the command exit nonzero. The selected devices must be visible to PyTorch.
 
 ## Reproducibility
 
-The CPU test suite covers input handling, structural filtering, output schemas,
-weight validation, and packaging:
+Check input handling without loading weights, then validate the environment
+and checkpoints before GPU inference:
 
 ```bash
-python -m pip install -e ".[test]"
-pytest -m "not gpu"
+rnacompass run --fasta examples/RF00001.fa --output-dir dry-run-check --dry-run
+rnacompass preflight --device cuda:0
 ```
 
-GPU reference validation and acceptance criteria are documented in the
-[reproducibility guide](docs/reproducibility.md). The held-out 80-family
+The [reproducibility guide](docs/reproducibility.md) records the reference
+inference settings and results. The held-out 80-family
 [test sequences and reference labels](data/test/) are also included.
 
 ## License

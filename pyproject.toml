@@ -31,9 +31,6 @@ classifiers = [
 Repository = "https://github.com/ZhaoRB1/RNAcompass"
 Issues = "https://github.com/ZhaoRB1/RNAcompass/issues"
 
-[project.optional-dependencies]
-test = ["pytest>=8,<9", "build>=1,<2"]
-
 [project.scripts]
 rnacompass = "rnacompass.cli:main"
 
@@ -47,8 +44,3 @@ where = ["src"]
 [tool.setuptools.package-data]
 rnacompass = ["data/*.json"]
 "rnacompass._vendor.ernie_project.src" = ["dict/*.txt"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-ra"
-markers = ["gpu: requires the full checkpoints and an NVIDIA CUDA GPU"]
