@@ -141,7 +141,7 @@ pytest -m "not gpu"
 
 GPU reference validation and acceptance criteria are documented in the
 [reproducibility guide](docs/reproducibility.md). The held-out 80-family
-[test sequences and reference labels](data/test_80/README.md) are also included.
+[test sequences and reference labels](data/test_80/) are also included.
 
 ## License
 
