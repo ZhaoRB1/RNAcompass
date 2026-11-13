@@ -9,12 +9,12 @@ import shutil
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Sequence
 
 import numpy as np
 
 from . import __version__
-from .fasta import read_records
+from .fasta import SequenceRecord, read_records
 from .filtering import filter_depmap
 from .heatmaps import write_heatmaps
 from .model import DISTILLED_WEIGHT_SHA256, MODEL_ID, MODEL_MAX_SEQUENCE_LENGTH, MODEL_THRESHOLD
@@ -66,10 +66,12 @@ def run_pipeline(
     overwrite: bool = False,
     no_heatmaps: bool = False,
     dry_run: bool = False,
+    records: Sequence[SequenceRecord] | None = None,
 ) -> int:
     if batch_size < 1:
         raise ValueError("--batch-size must be at least 1")
-    records = read_records(fasta=fasta, fasta_dir=fasta_dir, max_sequence_length=max_seq_len)
+    if records is None:
+        records = read_records(fasta=fasta, fasta_dir=fasta_dir, max_sequence_length=max_seq_len)
     output = Path(output_dir).expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
     results_root = output / "results"
