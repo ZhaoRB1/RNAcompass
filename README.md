@@ -9,9 +9,9 @@
 - [License](#license)
 
 RNAcompass is a co-distilled RNA language model for detecting conserved
-structural signals from a single RNA sequence. Its student model learns
-complementary global and local nucleotide-dependency patterns from multiple
-RNA language models.
+structural signals from a single RNA sequence. It distills aggregated
+dependency maps from multiple RNA language models into an ERNIE-RNA-giga
+student, using losses on the full map and on local stem regions.
 
 Given a sequence, RNAcompass generates a dependency map and applies fixed
 structural filtering to identify candidate base pairs and helices. The
