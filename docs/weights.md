@@ -4,9 +4,16 @@ The public RNAcompass v1 checkpoints are available from
 [Google Drive](https://drive.google.com/drive/folders/1qIOZfk1cOgqKFd04wXXeLpuGF18qphBz?usp=sharing).
 Follow the commands in the [README](../README.md#model-weights) to download them
 under the required `base/` and `distilled/` paths and verify their SHA256
-digests before inference.
+digests before inference. Downloading these two files directly does not require
+a `manifest.json` file.
 
-## Archive specification
+The repository's `src/rnacompass/data/model_manifest.json` records checkpoint
+metadata for reference. Inference does not read this file: it uses the model
+settings in `src/rnacompass/model.py` and the checkpoint specifications in
+`src/rnacompass/weights.py`. The model identifier in results comes from
+`model.py`.
+
+## Optional archive installation
 
 The `rnacompass weights install --archive` command expects one gzip-compressed
 tar archive with this exact layout:
@@ -19,10 +26,10 @@ rnacompass-weights-v1/
 └── distilled/Distilled_ernie_rna_giga.pth
 ```
 
-`manifest.json` must contain `model_id`, plus the exact relative path, byte
-size and SHA256 digest of both checkpoints. The checkpoint paths, sizes and
-digests are in `src/rnacompass/data/model_manifest.json`; the required
-`model_id` and archive specification are printed by `rnacompass info --json`.
+The `manifest.json` inside the archive is separate from the repository's
+`model_manifest.json`. The archive manifest must contain `model_id`, plus the
+exact relative path, byte size and SHA256 digest of both checkpoints. Run
+`rnacompass info --json` to see the required `weight_archive` specification.
 
 The installer rejects path traversal, absolute members, links, duplicates,
 unknown files, missing license files, size mismatches and digest mismatches.
