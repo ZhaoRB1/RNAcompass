@@ -30,14 +30,14 @@ class WeightSpec:
 
 WEIGHT_SPECS = (
     WeightSpec(
-        name="RNAcompass-trained ERNIE-RNA-giga base checkpoint",
-        relative_path="base/checkpoint_12_960000.pt",
+        name="Base_ernie_rna_giga.pt",
+        relative_path="base/Base_ernie_rna_giga.pt",
         size=3_653_738_558,
         sha256=BASE_WEIGHT_SHA256,
     ),
     WeightSpec(
-        name="RNAcompass Paper-R2 epoch-2 distilled checkpoint",
-        relative_path="distilled/vernie_rna_giga_irf_epoch002.pth",
+        name="Distilled_ernie_rna_giga.pth",
+        relative_path="distilled/Distilled_ernie_rna_giga.pth",
         size=1_218_010_975,
         sha256=DISTILLED_WEIGHT_SHA256,
     ),

@@ -9,14 +9,14 @@
   "max_sequence_length": 1022,
   "weights": [
     {
-      "name": "RNAcompass-trained ERNIE-RNA-giga base checkpoint",
-      "path": "base/checkpoint_12_960000.pt",
+      "name": "Base_ernie_rna_giga.pt",
+      "path": "base/Base_ernie_rna_giga.pt",
       "size": 3653738558,
       "sha256": "e83ae351adf73ae2c619ff969d91b8545b1dc93745abaffd5eb2ce9cd380f61e"
     },
     {
-      "name": "RNAcompass Paper-R2 epoch-2 distilled checkpoint",
-      "path": "distilled/vernie_rna_giga_irf_epoch002.pth",
+      "name": "Distilled_ernie_rna_giga.pth",
+      "path": "distilled/Distilled_ernie_rna_giga.pth",
       "size": 1218010975,
       "sha256": "02ae70fe93f3fa3b9b1b1020757b4e032df22becd225a055144cae17b032f9cd"
     }

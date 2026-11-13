@@ -2,7 +2,7 @@
 
 The public RNAcompass v1 checkpoints are available from
 [Google Drive](https://drive.google.com/drive/folders/1qIOZfk1cOgqKFd04wXXeLpuGF18qphBz?usp=sharing).
-Follow the commands in the [README](../README.md#quick-start) to download them
+Follow the commands in the [README](../README.md#model-weights) to download them
 under the required `base/` and `distilled/` paths and verify their SHA256
 digests before inference.
 
@@ -15,8 +15,8 @@ tar archive with this exact layout:
 rnacompass-weights-v1/
 ├── manifest.json
 ├── LICENSE
-├── base/checkpoint_12_960000.pt
-└── distilled/vernie_rna_giga_irf_epoch002.pth
+├── base/Base_ernie_rna_giga.pt
+└── distilled/Distilled_ernie_rna_giga.pth
 ```
 
 `manifest.json` must contain `model_id`, plus the exact relative path, byte

@@ -59,11 +59,11 @@ WEIGHTS_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/rnacompass/weights/v1"
 mkdir -p "$WEIGHTS_DIR/base" "$WEIGHTS_DIR/distilled"
 
 curl -L --fail --retry 5 --continue-at - \
-  -o "$WEIGHTS_DIR/base/checkpoint_12_960000.pt" \
+  -o "$WEIGHTS_DIR/base/Base_ernie_rna_giga.pt" \
   "https://drive.usercontent.google.com/download?id=1bBG45EQi1TZKxYiZS3jpt8ePprHFlzGz&export=download&confirm=t"
 
 curl -L --fail --retry 5 --continue-at - \
-  -o "$WEIGHTS_DIR/distilled/vernie_rna_giga_irf_epoch002.pth" \
+  -o "$WEIGHTS_DIR/distilled/Distilled_ernie_rna_giga.pth" \
   "https://drive.usercontent.google.com/download?id=1rz-QT529q64kymgW4E__i0vGEoP2VLMj&export=download&confirm=t"
 
 rnacompass weights status --check-hashes
@@ -115,7 +115,7 @@ Use a single Python command to distribute FASTA records across the selected
 GPUs. The dispatcher starts one independent inference process per GPU:
 
 ```bash
-python scripts/run_multi_gpu.py \
+python -m rnacompass.run_multi_gpu \
   --fasta-dir /path/to/fastas \
   --output-dir output \
   --devices cuda:0,cuda:1,cuda:2,cuda:3 \
@@ -139,9 +139,8 @@ rnacompass run --fasta examples/RF00001.fa --output-dir dry-run-check --dry-run
 rnacompass preflight --device cuda:0
 ```
 
-The [reproducibility guide](docs/reproducibility.md) records the reference
-inference settings and results. The held-out 80-family
-[test sequences and reference labels](data/test/) are also included.
+The held-out 80-family [test sequences and reference labels](data/test/) are
+also included.
 
 ## License
 

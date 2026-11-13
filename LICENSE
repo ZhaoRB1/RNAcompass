@@ -5,8 +5,8 @@ RNAcompass License Notices
 The following MIT License applies to the original RNAcompass source code and
 to the trained parameters in both RNAcompass v1 checkpoint files:
 
-- base/checkpoint_12_960000.pt
-- distilled/vernie_rna_giga_irf_epoch002.pth
+- base/Base_ernie_rna_giga.pt
+- distilled/Distilled_ernie_rna_giga.pth
 
 MIT License
 
