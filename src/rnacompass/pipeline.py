@@ -19,7 +19,6 @@ from .filtering import filter_depmap
 from .heatmaps import write_heatmaps
 from .model import DISTILLED_WEIGHT_SHA256, MODEL_ID, MODEL_MAX_SEQUENCE_LENGTH, MODEL_THRESHOLD
 from .outputs import write_filter_outputs
-from .preflight import run_preflight
 from .weights import resolve_weights_dir
 
 
@@ -114,6 +113,8 @@ def run_pipeline(
                 encoding="utf-8",
             )
             return 0
+
+        from .preflight import run_preflight
 
         report = run_preflight(selected_weights, device=device)
         if not report["success"]:
