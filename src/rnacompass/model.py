@@ -1,9 +1,12 @@
-"""Frozen public model metadata for RNAcompass v1."""
+"""Public model identifiers and inference constants for RNAcompass v1.
+
+The encoder architecture is implemented in the bundled ERNIE-RNA source.
+"""
 
 from __future__ import annotations
 
-MODEL_ID = "paper_r2__ernie_rna_giga__epoch002"
-MODEL_NAME = "RNAcompass Paper-R2 ERNIE-RNA-giga epoch 2"
+MODEL_ID = "rnacompass_v1"
+MODEL_NAME = "RNAcompass v1"
 MODEL_ARCHITECTURE = "ernie_rna_giga"
 MODEL_THRESHOLD = 14.168192944655118
 MODEL_MAX_SEQUENCE_LENGTH = 1022
