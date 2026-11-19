@@ -4,6 +4,7 @@
 - [Model weights](#model-weights)
 - [Quick start](#quick-start)
 - [Usage](#usage)
+- [Distillation training](#distillation-training)
 - [Multi-GPU inference](#multi-gpu-inference)
 - [Checks and test data](#checks-and-test-data)
 - [License](#license)
@@ -110,6 +111,15 @@ pairs and helices, a JSON summary, and PDF/SVG/PNG heatmaps under
 `output/results/<sample>/`. The model supports sequences up to 1,022 nt.
 Run `rnacompass run --help` for all options.
 
+## Distillation training
+
+Run the two-round ERNIE-RNA-giga training example from the repository root after
+activating the environment (`0` selects the GPU):
+
+```bash
+bash training/run_example 0
+```
+
 ## Multi-GPU inference
 
 Use a single Python command to distribute FASTA records across the selected
@@ -148,4 +158,4 @@ also included.
 
 RNAcompass source code and trained model parameters are released under the
 [MIT License](LICENSE), which also preserves the notice for the bundled
-ERNIE-RNA-derived source code.
+ERNIE-RNA-derived source code and the notices for third-party training utilities.

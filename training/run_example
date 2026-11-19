@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source "$(dirname -- "${BASH_SOURCE[0]}")/scripts/_environment.sh"
+GPU="${1:-0}"
+echo 'Training example: Round 1'
+bash "$TRAINING_DIR/scripts/train_r1.sh" ernie_rna_giga "$GPU" --batch_size 1 --val_batch_size_factor 1
+echo 'Training example: Round 2'
+bash "$TRAINING_DIR/scripts/train_r2.sh" ernie_rna_giga "$GPU" --batch_size 1 --val_batch_size_factor 1
+echo "Training example complete. Outputs: $RNACOMPASS_RESULTS_DIR/training/"

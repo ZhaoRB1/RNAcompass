@@ -1,0 +1,99 @@
+{
+  "task": "RNA_CI_CoDistillation",
+  "setting": {
+    "data_name": "rnacompass_training_example_r2",
+    "model_key": "rinalmo_giga",
+    "model_checkpoint": "{data_root}/models/rinalmo_giga/rinalmo_giga_pretrained.pt",
+    "seed": 113,
+    "data_order": 0,
+    "val_frac": 0.1,
+    "min_valid_rnas": 1,
+    "mu_base": 0.7193318389751302,
+    "mu_target": 0.677216110736378,
+    "sig": 1.0,
+    "trust_remote_code": true,
+    "cache_dir": null,
+    "initial_checkpoint": "{results_root}/training/r1/rinalmo_giga/vrinalmo_giga_epoch001.pth"
+  },
+  "model": {
+    "max_length": 128,
+    "matrix_offset": 1,
+    "max_special_tokens": 2,
+    "tokenizer": {
+      "replace_t_with_u": true,
+      "add_spaces": false
+    },
+    "lm_params": {
+      "full": 0,
+      "nlayers": 4,
+      "head": 1,
+      "embeddings": 0,
+      "tie_head_to_embeddings": 1,
+      "norm": 1
+    },
+    "ci_params": {
+      "mutation_batch_size": 4,
+      "backward_row_chunk_size": 4,
+      "disable_dropout_for_ci": true,
+      "token_offset": 1,
+      "mask_diag": 1,
+      "symmetrize": false,
+      "epsilon": 1e-10
+    },
+    "stem_loss": {
+      "enabled": true,
+      "candidate_root": "{data_root}/r2/candidates",
+      "model": "rawavg_teacher",
+      "pair_file_name": "filtered_pairs.tsv",
+      "lambda_global": 1.0,
+      "lambda_pair": 0.0,
+      "lambda_stem_window": 1,
+      "stem_window_mode": "local_static",
+      "stem_window_target": "teacher",
+      "stem_window_radius": 2,
+      "include_pair_in_stem_window": true,
+      "stem_window_hard_per_positive": 0,
+      "stem_window_max_per_positive": 0
+    },
+    "stem_eval": {
+      "top_k": "L",
+      "stem_hit_fraction": 0.5
+    },
+    "measure_dct": {
+      "loss": "avg",
+      "loss_global": "avg",
+      "loss_stem_window": "avg"
+    }
+  },
+  "training": {
+    "nepochs": 1,
+    "minimum_epochs": 0,
+    "ignore_diagonal": true,
+    "grad_clip": 1.0,
+    "num_workers": 0,
+    "optim": {
+      "lr": 0.0001,
+      "head_lr_mult": 2,
+      "scheduler": "cosine",
+      "warmup_rate": 0.05,
+      "weight_decay": 0.01,
+      "split_decay": 1,
+      "scheduler_factor": 1
+    },
+    "log_freq": 1,
+    "early_stopping": {
+      "max_delta": 0.0001,
+      "min_delta": 0.001,
+      "patience": 10,
+      "counter": 0
+    },
+    "load": 0,
+    "validation_per_epoch": 1
+  },
+  "round": "r2",
+  "model_alias": "rinalmo_giga",
+  "data": {
+    "train_file": "{data_root}/r2/train_records.jsonl",
+    "valid_file": "{data_root}/r2/valid_records.jsonl"
+  }
+}
