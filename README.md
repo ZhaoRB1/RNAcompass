@@ -113,12 +113,29 @@ Run `rnacompass run --help` for all options.
 
 ## Distillation training
 
-Run the two-round ERNIE-RNA-giga training example from the repository root after
-activating the environment (`0` selects the GPU):
+We provide a two-round distillation training example for ERNIE-RNA-giga. The
+inputs in [data/training/](data/training/) include RNA sequences, precomputed
+teacher dependency maps and base-pair coordinates, with four training records
+and two validation records for each round.
+
+After [setting up the environment](#installation) and
+[downloading the base checkpoint](#model-weights), activate the environment and
+run the following command from the repository root. Replace `0` with your GPU
+device index:
 
 ```bash
 bash training/run_example 0
 ```
+
+The script runs one epoch per round. Round 1 starts from the pretrained base
+model; Round 2 loads the Round 1 checkpoint and uses the supplied Round 2
+teacher maps. Model checkpoints, training logs and validation metrics are
+saved under `results/training/r1/ernie_rna_giga/` and
+`results/training/r2/ernie_rna_giga/`.
+
+The distillation model is implemented in
+[training/modelling/RNAcompass_distill.py](training/modelling/RNAcompass_distill.py),
+with round-specific settings in [training/configs/](training/configs/).
 
 ## Multi-GPU inference
 
