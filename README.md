@@ -113,29 +113,16 @@ Run `rnacompass run --help` for all options.
 
 ## Distillation training
 
-We provide a two-round distillation training example for ERNIE-RNA-giga. The
-inputs in [data/training/](data/training/) include RNA sequences, precomputed
-teacher dependency maps and base-pair coordinates, with four training records
-and two validation records for each round.
-
-After [setting up the environment](#installation) and
-[downloading the base checkpoint](#model-weights), activate the environment and
-run the following command from the repository root. Replace `0` with your GPU
-device index:
+For ERNIE-RNA-giga, run the two-round training example from the repository root
+after activating the environment, using the desired GPU device:
 
 ```bash
-bash training/run_example 0
+bash training/run_example <gpu_id>
 ```
 
-The script runs one epoch per round. Round 1 starts from the pretrained base
-model; Round 2 loads the Round 1 checkpoint and uses the supplied Round 2
-teacher maps. Model checkpoints, training logs and validation metrics are
-saved under `results/training/r1/ernie_rna_giga/` and
-`results/training/r2/ernie_rna_giga/`.
-
-The distillation model is implemented in
-[training/modelling/RNAcompass_distill.py](training/modelling/RNAcompass_distill.py),
-with round-specific settings in [training/configs/](training/configs/).
+Replace `<gpu_id>` with the GPU index (e.g. `0`). The script runs Round 1
+followed by Round 2. Default training settings can be modified in the bash
+scripts and corresponding JSON configuration files.
 
 ## Multi-GPU inference
 
@@ -174,5 +161,4 @@ also included.
 ## License
 
 RNAcompass source code and trained model parameters are released under the
-[MIT License](LICENSE), which also preserves the notice for the bundled
-ERNIE-RNA-derived source code and the notices for third-party training utilities.
+[MIT License](LICENSE).
